@@ -1,5 +1,5 @@
-# SHADE-Optimizer-Example
-3D Point Cloud SHADE Optimizer. Add SHADE+LM algorithm with a demo function.
+# CEC-Optimizer-Example
+3D Point Cloud with CEC Optimizer. Add SHADE+LM and mLSHADE-SPACMA algorithm with a demo function.
 
 # Environment
 
