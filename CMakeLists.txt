@@ -1,0 +1,190 @@
+cmake_minimum_required(VERSION 3.15)
+project(CEC-Optimizer)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(PCL_DIR "C:/Program Files/PCL 1.9.1")
+include_directories(
+    ${PCL_DIR}/include/pcl-1.9
+    ${PCL_DIR}/3rdParty/OpenNI2/Include
+    ${PCL_DIR}/3rdParty/Boost/include/boost-1_68
+    ${PCL_DIR}/3rdParty/Eigen/eigen3
+    ${PCL_DIR}/3rdParty/FLANN/include
+    ${PCL_DIR}/3rdParty/Qhull/include
+    ${PCL_DIR}/3rdParty/VTK/include/vtk-8.1
+    include
+)
+link_directories(
+    ${PCL_DIR}/lib
+    ${PCL_DIR}/3rdParty/Boost/lib
+    ${PCL_DIR}/3rdParty/FLANN/lib
+    ${PCL_DIR}/3rdParty/OpenNI2/Lib
+    ${PCL_DIR}/3rdParty/Qhull/lib
+    ${PCL_DIR}/3rdParty/VTK/lib
+)
+add_definitions(
+    _CRT_SECURE_NO_WARNINGS
+    _SCL_SECURE_NO_WARNINGS
+    _SILENCE_FPOS_SEEKPOS_DEPRECATION_WARNING
+)
+set(SOURCES
+    src/main.cpp
+    src/SHADE.cpp
+    src/mLSHADE_SPACMA.cpp
+)
+set(HEADERS
+    include/kmpe_cost_function.h
+    include/SHADE.h
+    include/mLSHADE_SPACMA.h
+    include/LevenbergMarquardt.h
+    include/sphere_calibration.h
+)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+set(PCL_LIBS
+    pcl_common_release
+    pcl_features_release
+    pcl_filters_release
+    pcl_io_ply_release
+    pcl_io_release
+    pcl_kdtree_release
+    pcl_keypoints_release
+    pcl_ml_release
+    pcl_octree_release
+    pcl_outofcore_release
+    pcl_people_release
+    pcl_recognition_release
+    pcl_registration_release
+    pcl_sample_consensus_release
+    pcl_search_release
+    pcl_segmentation_release
+    pcl_stereo_release
+    pcl_surface_release
+    pcl_tracking_release
+    pcl_visualization_release
+)
+set(VTK_LIBS
+    vtkalglib-8.1
+    vtkChartsCore-8.1
+    vtkCommonColor-8.1
+    vtkCommonComputationalGeometry-8.1
+    vtkCommonCore-8.1
+    vtkCommonDataModel-8.1
+    vtkCommonExecutionModel-8.1
+    vtkCommonMath-8.1
+    vtkCommonMisc-8.1
+    vtkCommonSystem-8.1
+    vtkCommonTransforms-8.1
+    vtkDICOMParser-8.1
+    vtkDomainsChemistry-8.1
+    vtkexoIIc-8.1
+    vtkexpat-8.1
+    vtkFiltersAMR-8.1
+    vtkFiltersCore-8.1
+    vtkFiltersExtraction-8.1
+    vtkFiltersFlowPaths-8.1
+    vtkFiltersGeneral-8.1
+    vtkFiltersGeneric-8.1
+    vtkFiltersGeometry-8.1
+    vtkFiltersHybrid-8.1
+    vtkFiltersHyperTree-8.1
+    vtkFiltersImaging-8.1
+    vtkFiltersModeling-8.1
+    vtkFiltersParallel-8.1
+    vtkFiltersParallelImaging-8.1
+    vtkFiltersPoints-8.1
+    vtkFiltersProgrammable-8.1
+    vtkFiltersSelection-8.1
+    vtkFiltersSMP-8.1
+    vtkFiltersSources-8.1
+    vtkFiltersStatistics-8.1
+    vtkFiltersTexture-8.1
+    vtkFiltersTopology-8.1
+    vtkFiltersVerdict-8.1
+    vtkfreetype-8.1
+    vtkGeovisCore-8.1
+    vtkgl2ps-8.1
+    vtkhdf5-8.1
+    vtkhdf5_hl-8.1
+    vtkImagingColor-8.1
+    vtkImagingCore-8.1
+    vtkImagingFourier-8.1
+    vtkImagingGeneral-8.1
+    vtkImagingHybrid-8.1
+    vtkImagingMath-8.1
+    vtkImagingMorphological-8.1
+    vtkImagingSources-8.1
+    vtkImagingStatistics-8.1
+    vtkImagingStencil-8.1
+    vtkInfovisCore-8.1
+    vtkInfovisLayout-8.1
+    vtkInteractionImage-8.1
+    vtkInteractionStyle-8.1
+    vtkInteractionWidgets-8.1
+    vtkIOAMR-8.1
+    vtkIOCore-8.1
+    vtkIOEnSight-8.1
+    vtkIOExodus-8.1
+    vtkIOExport-8.1
+    vtkIOExportOpenGL-8.1
+    vtkIOGeometry-8.1
+    vtkIOImage-8.1
+    vtkIOImport-8.1
+    vtkIOInfovis-8.1
+    vtkIOLegacy-8.1
+    vtkIOLSDyna-8.1
+    vtkIOMINC-8.1
+    vtkIOMovie-8.1
+    vtkIONetCDF-8.1
+    vtkIOParallel-8.1
+    vtkIOParallelXML-8.1
+    vtkIOPLY-8.1
+    vtkIOSQL-8.1
+    vtkIOTecplotTable-8.1
+    vtkIOVideo-8.1
+    vtkIOXML-8.1
+    vtkIOXMLParser-8.1
+    vtkjpeg-8.1
+    vtkjsoncpp-8.1
+    vtklibharu-8.1
+    vtklibxml2-8.1
+    vtklz4-8.1
+    vtkmetaio-8.1
+    vtkNetCDF-8.1
+    vtknetcdfcpp-8.1
+    vtkoggtheora-8.1
+    vtkParallelCore-8.1
+    vtkpng-8.1
+    vtkproj4-8.1
+    vtkRenderingAnnotation-8.1
+    vtkRenderingContext2D-8.1
+    vtkRenderingContextOpenGL-8.1
+    vtkRenderingCore-8.1
+    vtkRenderingFreeType-8.1
+    vtkRenderingGL2PS-8.1
+    vtkRenderingImage-8.1
+    vtkRenderingLabel-8.1
+    vtkRenderingLIC-8.1
+    vtkRenderingLOD-8.1
+    vtkRenderingOpenGL-8.1
+    vtkRenderingVolume-8.1
+    vtkRenderingVolumeOpenGL-8.1
+    vtksqlite-8.1
+    vtksys-8.1
+    vtktiff-8.1
+    vtkverdict-8.1
+    vtkViewsContext2D-8.1
+    vtkViewsCore-8.1
+    vtkViewsInfovis-8.1
+    vtkzlib-8.1
+)
+target_link_libraries(${PROJECT_NAME} ${PCL_LIBS} ${VTK_LIBS})
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE 
+        $<$<CONFIG:Release>:/O2 /Ob2 /Oi /Ot /GL>
+        $<$<CONFIG:Debug>:/Od>
+    )
+    
+    target_link_options(${PROJECT_NAME} PRIVATE
+        $<$<CONFIG:Release>:/LTCG /OPT:REF /OPT:ICF>
+    )
+endif()
+target_link_options(${PROJECT_NAME} PRIVATE "/SUBSYSTEM:CONSOLE")
