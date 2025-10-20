@@ -49,7 +49,7 @@
 ![Result-1](./image/result-1.png)
 
 
-| Algorithms        | Charmfer Distance  | Hausdorff Distance |
+| Algorithms        | Charmfer Distance/mm | Hausdorff Distance/mm |
 | ----------------- | ------------------ | ------------------ |
 | mLSHADE+LM-KRSL   | 0.426±0.129       | 0.484±0.103       |
 | mLSHADE+LM-KRSMPL | 0.471±0.139 |  0.598±0.117             |
